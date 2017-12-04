@@ -16,8 +16,33 @@ Feature: Hostname
     And user clicks on select button
     Then login view should be visible
 
-    @browser
-    Scenario: User opens valid host name on browser
-      Given user opens BROWSER application
-      When user opens "https://open.rocket.chat" url
-      Then login view should be visible
+  @browser
+  Scenario: User opens valid host name on browser
+    Given user opens BROWSER application
+    When user opens "https://open.rocket.chat" url
+    Then login view should be visible
+
+  Scenario: User enters correct username and clicks the login button
+    Given user opens BROWSER application
+    When user opens "https://open.rocket.chat" url
+    And login view should be visible
+    And user enters correct username
+    And user clicks the login button
+    Then password error message should be visible
+
+  Scenario: User enters correct password and clicks the login button
+    Given user opens BROWSER application
+    When user opens "https://open.rocket.chat" url
+    And login view should be visible
+    And user enters correct password
+    And user clicks the login button
+    Then username error message should be visible
+
+  Scenario: User leaves username and password fields empty and clicks the login button
+    Given user opens BROWSER application
+    When user opens "https://open.rocket.chat" url
+    And login view should be visible
+    And user clicks the login button
+    Then username error message should be visible
+    Then password error message should be visible
+    
